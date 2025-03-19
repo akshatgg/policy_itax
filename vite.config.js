@@ -9,8 +9,10 @@ export default defineConfig({
     tailwindcss(),
   ],
   server: {
+   
+    host: true,
     watch: {
-      usePolling: true,
+        usePolling: true,
     },
-  },
+},
 })
