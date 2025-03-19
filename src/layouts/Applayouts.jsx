@@ -13,6 +13,15 @@ const Loadingscreen = () => {
 
 
 const AppLayouts = () => {
+    
+    const location = useLocation();
+    useEffect(() => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+        });
+    }, [location]);
     return (
         <div>
             <Navbar/>
