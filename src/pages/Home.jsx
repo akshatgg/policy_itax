@@ -1,11 +1,13 @@
 import React from 'react';
-
+import { InsuranceProvider } from '../Coponents/Home/InsuranceContext';
+import HomeM from '../Coponents/Home/HomeM';
 const Home = () => {
     return (
-        <div className="h-screen flex flex-col items-center justify-center">
-            <h1 >Welcome to the Home Page</h1>
-            <p>This is the main landing page of the application.</p>
+        <InsuranceProvider>
+        <div className="min-h-screen bg-gray-100">
+          <HomeM/>
         </div>
+      </InsuranceProvider>
     );
 };
 
