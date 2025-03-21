@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import theme from '../theme/theme';
 
 // Import icons
-import { ChevronDown, ChevronUp, Phone } from 'lucide-react';
+import { ChevronDown, ChevronUp, Phone, Settings, FileText } from 'lucide-react';
 
 const NavbarContainer = styled.nav`
   display: flex;
@@ -89,6 +89,10 @@ const IconWrapper = styled.div`
   color: ${props => props.color || theme.primary};
 `;
 
+const CallButtonContainer = styled.div`
+  position: relative;
+`;
+
 const CallButton = styled.button`
   display: flex;
   align-items: center;
@@ -96,13 +100,100 @@ const CallButton = styled.button`
   color: ${theme.primary};
   border: 1px solid ${theme.primary};
   border-radius: 50px;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.2rem;
   font-weight: bold;
   cursor: pointer;
   margin-right: 1rem;
-  
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+
   &:hover {
     background-color: #f0f7ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const SlideButton = styled.div`
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 1px;
+  padding: 1.2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: none;
+  z-index: 100;
+  animation: fadeIn 0.3s ease-in-out;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+
+    transform: translateX(-50%) rotate(45deg);
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+  }
+
+  ${CallButtonContainer}:hover & {
+    display: block;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    padding: 0.4rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: #f5f9ff;
+      transform: translateX(5px);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    svg {
+      margin-right: 0.8rem;
+      color: ${theme.primary};
+      min-width: 22px;
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: ${theme.textPrimary};
+  }
+
+  span {
+    font-weight: bold;
+    color: ${theme.primary};
+    display: block;
+    margin-top: 2px;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
   }
 `;
 
@@ -242,10 +333,41 @@ const Navbar = () => {
           </DropdownContainer>
         </NavItem>
         
-        <CallButton>
-          <Phone size={16} style={{ marginRight: '0.5rem' }} />
-          Talk to Expert
-        </CallButton>
+        <CallButtonContainer>
+          <CallButton>
+            <Phone size={16} style={{ marginRight: '0.5rem' }} />
+            Talk to Expert
+          </CallButton>
+          <SlideButton>
+            <div>
+              <Phone size={22} color={theme.primary} />
+              <div className='flex flex-col'>
+                <p>Buying a new policy</p>
+                <span>1800-208-8787</span>
+              </div>
+            </div>
+            <hr style={{ border: "0.5px solid #D3D3D3", width: "100%",marginBottom:"5%" }} />
+            <div>
+              <Settings size={22} color={theme.primary} />
+              <div className='flex flex-col'>
+                <p>Existing policy support</p>
+                <span>1800-258-5970</span>
+              </div>
+            </div>
+
+
+            <hr style={{ border: "0.5px solid #D3D3D3", width: "100%",marginBottom:"5%" }} />
+
+
+            <div>
+              <FileText size={22} color={theme.primary} />
+              <div className='flex flex-col'>
+                <p>Claims assistance</p>
+                <span>1800-258-5881</span>
+              </div>
+            </div>
+          </SlideButton>
+        </CallButtonContainer>
         
         <SignInButton>Sign in</SignInButton>
       </NavLinks>
