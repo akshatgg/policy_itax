@@ -6,7 +6,6 @@ const InsuranceCategoryCard = ({ discount, icon, title, className }) => {
             {discount && (
                 <div className="absolute bg-green-200 text-green-800 text-xs w-full">
                     <p className='text-center'>
-
                     {discount}
                     </p>
                 </div>

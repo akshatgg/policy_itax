@@ -2,7 +2,7 @@
 const theme = {
     primary: "#0050A2", // PolicyBazaar Blue
     secondary: "#002E5D", // Dark Blue
-    accent: "#F29F05", // Yellow-Orange (for highlights)
+    accent: "#B6F4B4", // Yellow-Orange (for highlights)
     background: "#F8F9FA", // Light Gray
     textPrimary: "#333333", // Dark Gray for text
     textSecondary: "#666666", // Lighter Gray for secondary text
